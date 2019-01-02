@@ -1,0 +1,59 @@
+task helloWorld {
+    doLast{
+        println 'hello world !';
+    }
+}
+
+
+task helloWorldShort << {
+    println ' hello short << '
+} 
+
+
+// DINAMIC DEFINITION AND TASK CHAINING
+
+task startSession << {
+    chant()
+}
+
+def chant(){
+    ant.echo(message: 'Repeat after me')
+}
+
+3.times {
+    task "gradletask$it" << {
+        println 'Gradle rocks'
+    }
+}
+
+ gradletask0.dependsOn startSession
+gradletask2.dependsOn gradletask1, gradletask0
+task groupTherapy (dependsOn: gradletask2)
+
+// gradle gT y llama el arbol de dependencias 
+
+// gradle -q tasks
+// gradle -q  tasks --all
+// -x exclude tasks
+// -h help 
+// gradle -b test.gradle
+// --offline  para usar dependencias lcoales
+// -D , --system-prop –Dmyprop=myvalue
+// -P , --project-prop  Pmyprop=myvalue
+// loggin options 
+        // -i , --info show default settings
+        //-s , --stacktrace 
+        // -q , --quiet para mostrar limpio el resultado de la ejecucion.
+// help tasks
+        // tasks
+        // properties properties avaible in ypur project
+
+// gradle gT --daemon
+// gradle gT --no-daemon
+// gradle --stop para detener daemon
+// para evitar dolast usar <<
+
+
+
+
+
