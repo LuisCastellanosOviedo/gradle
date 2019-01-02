@@ -53,6 +53,7 @@ task groupTherapy (dependsOn: gradletask2)
 // gradle --stop para detener daemon
 // para evitar dolast usar <<
 
+// create java porject --> gradle init --type java-library
 
 
 
