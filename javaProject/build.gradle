@@ -26,6 +26,37 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
+task printVersion {
+
+    group = 'versioning'
+    description  = 'print s version number '
+
+    doLast {
+        println "Version : $version"
+    }
+}
+
+task printVersionShort << {
+        println "Version : $version"
+}
 
 
+
+task first << {println 'first'}
+task second << {println 'second'}
+
+task printVersionDepends (dependsOn: [second,first]) << {
+    println ("version $version")
+}
+
+task third << {println 'third '}
+third.dependsOn('printVersionDepends')
+
+
+
+// finalized by 
+task firstF << {println 'firstF'}
+task secondF << {println 'secondF'}
+
+firstF.finalizedBy secondF
 
